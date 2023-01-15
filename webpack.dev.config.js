@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const dotenv = require("dotenv-webpack");
 
 const rules = [
     {
@@ -22,7 +23,10 @@ const rules = [
 module.exports = {
     mode: "production",
     entry: "./src/index.js",
-    plugins: [new HtmlWebpackPlugin()],
+    plugins: [
+        new HtmlWebpackPlugin({ template: "./public/index.html" }),
+        new dotenv(),
+    ],
     output: {
         filename: "dist/bundle.js",
         path: path.resolve(__dirname, "build"),

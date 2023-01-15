@@ -12,8 +12,8 @@
         "dev": "webpack-dev-server --config webpack.dev.config.js",
         "build": "webpack --config webpack.prod.config.js",
         "style": "npm run style-light && npm run style-min",
-        "style-light": "sass www/style/scss/main.scss www/style/css/style.css --no-source-map",
-        "style-min": "sass www/style/scss/main.scss www/style/css/style.min.css --no-source-map --style compressed"
+        "style-light": "sass src/style/scss/main.scss public/css/style.css --no-source-map",
+        "style-min": "sass src/style/scss/main.scss public/css/style.min.css --no-source-map --style compressed"
     },
     "keywords": [],
     "author": "",

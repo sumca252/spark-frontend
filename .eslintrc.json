@@ -74,7 +74,7 @@
         ],
         "padded-blocks": [2, "never"],
         "newline-after-var": [2, "always"],
-        "max-len": [2, 100],
+        "max-len": [2, 200],
         "comma-style": [2, "last"],
         "no-multi-str": 2,
         "wrap-iife": ["error", "any"],
