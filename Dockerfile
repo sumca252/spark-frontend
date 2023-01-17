@@ -1,18 +1,19 @@
-FROM node:16-alpine as build
+FROM node:16-alpine 
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 COPY package*.json ./
 
-RUN --mount=type=cache,target=/usr/src/app/node_modules \
-    --mount=type=cache,target=/root/.npm \
-    npm install
+RUN npm install
 
-COPY . .
+COPY ./src  ./src 
+COPY ./public ./public
+COPY .env.production* ./.env
 
-FROM nginx:alpine
 
-COPY --from=build /usr/src/app/build /usr/share/nginx/html
+COPY webpack.dev.config.js ./
 
-EXPOSE 80
+EXPOSE 3000
+
+CMD npm run prod
 

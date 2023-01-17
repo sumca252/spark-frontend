@@ -12,7 +12,7 @@ const Auth = {
         phone: "",
         password: "",
         role: "",
-        roleId: "",
+        roleId: 1,
     },
     isAuthenticated: false,
     register: () => {
