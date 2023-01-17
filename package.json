@@ -1,0 +1,33 @@
+{
+    "dependencies": {
+        "mithril": "^2.2.2",
+        "sass": "^1.57.1"
+    },
+    "name": "spark-frontend",
+    "description": "",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "npm run style && webpack-dev-server --config webpack.dev.config.js",
+        "build": "npm run style && webpack --config webpack.prod.config.js",
+        "style": "npm run style-light && npm run style-min",
+        "style-light": "sass src/style/scss/main.scss public/css/style.css --no-source-map",
+        "style-min": "sass src/style/scss/main.scss public/css/style.min.css --no-source-map --style compressed"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "css-loader": "^6.7.3",
+        "dotenv-webpack": "^8.0.1",
+        "eslint": "^8.32.0",
+        "eslint-plugin-react": "^7.32.0",
+        "file-loader": "^6.2.0",
+        "html-webpack-plugin": "^5.5.0",
+        "style-loader": "^3.3.1",
+        "webpack": "^5.75.0",
+        "webpack-cli": "^5.0.1",
+        "webpack-dev-server": "^4.11.1"
+    }
+}
