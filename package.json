@@ -1,8 +1,4 @@
 {
-    "dependencies": {
-        "mithril": "^2.2.2",
-        "sass": "^1.57.1"
-    },
     "name": "spark-frontend",
     "description": "",
     "version": "1.0.0",
@@ -18,6 +14,11 @@
     "keywords": [],
     "author": "",
     "license": "ISC",
+    "dependencies": {
+        "leaflet": "^1.9.3",
+        "mithril": "^2.2.2",
+        "sass": "^1.57.1"
+    },
     "devDependencies": {
         "css-loader": "^6.7.3",
         "dotenv-webpack": "^8.0.1",

@@ -39,6 +39,9 @@ const layout = {
                 ]
             ),
             m("div.wrapper.mt-5", [m("div.container", [vnode.children])]),
+            m("footer.footer.text-center.sticky-footer", [
+                m("div.container", ["© 2023 Spark."]),
+            ]),
         ]);
     },
 };

@@ -22,3 +22,15 @@ h5,
 h6 {
   font-family: "Roboto", sans-serif;
 }
+
+.footer {
+  background-color: #f5f8ff;
+  padding: 1rem 0;
+  margin-top: auto !important;
+}
+
+.sticky-footer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

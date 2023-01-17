@@ -14,7 +14,7 @@ const Auth = {
         role: "",
         roleId: "",
     },
-    isAuthenticated: true,
+    isAuthenticated: false,
     register: () => {
         return m
             .request({
@@ -64,32 +64,36 @@ const Auth = {
             });
     },
     loginWithGithub: () => {
-        console.log("Github");
+        window.location.href = `${Auth.url}/auth/github2`;
     },
     loginWithGoogle: () => {
         window.location.href = `${Auth.url}/auth/google2`;
     },
-    checkAuth: async () => {
-        const res = await m.request({
-            method: "GET",
-            url: `${Auth.url}/auth/success`,
-            headers: {
-                "Content-Type": "application/json",
-            },
-            withCredentials: true,
-        });
+    checkAuth: () => {
+        return m
+            .request({
+                method: "GET",
+                url: `${Auth.url}/auth/success`,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                withCredentials: true,
+            })
+            .then((response) => {
+                if (response.status === 200 && response.user) {
+                    Auth.user.firstName = response.user.first_name;
+                    Auth.user.lastName = response.user.last_name;
+                    Auth.user.username = response.user.username;
+                    Auth.user.email = response.user.email;
+                    Auth.user.phone = response.user.phone;
+                    Auth.user.role = response.user.role;
+                    Auth.user.roleId = response.user.role_id;
+                    localStorage.setItem("user", JSON.stringify(Auth.user));
+                    Auth.isAuthenticated = true;
 
-        if (res.status === 200) {
-            Auth.isAuthenticated = true;
-            Auth.user.firstName = res.user.first_name;
-            Auth.user.lastName = res.user.last_name;
-            Auth.user.username = res.user.username;
-            Auth.user.email = res.user.email;
-            Auth.user.phone = res.user.phone;
-            Auth.user.role = res.user.role;
-            Auth.user.roleId = res.user.role_id;
-            m.route.set("/");
-        }
+                    m.route.set("/");
+                }
+            });
     },
 };
 

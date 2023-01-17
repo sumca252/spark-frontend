@@ -8,11 +8,21 @@ import m from "mithril";
 import register from "./views/register.js";
 import settings from "./views/settings.js";
 import stations from "./views/stations.js";
+import overview from "./views/overview.js";
 
 m.route(document.body, "/", {
     "/": {
         render: () => {
             if (Auth.isAuthenticated) {
+                return m(layout, { selected: "Översikt" }, m(overview));
+            }
+
+            m.route.set("/logga-in");
+        },
+    },
+    "/admin": {
+        render: () => {
+            if (Auth.isAuthenticated === true) {
                 return m(layout, { selected: "Adminstratörer" }, m(admin));
             }
             m.route.set("/logga-in");
@@ -20,7 +30,7 @@ m.route(document.body, "/", {
     },
     "/kunder": {
         render: () => {
-            if (Auth.isAuthenticated) {
+            if (Auth.isAuthenticated === true) {
                 return m(layout, { selected: "Kunder" }, m(customers));
             }
             m.route.set("/logga-in");
@@ -66,7 +76,7 @@ m.route(document.body, "/", {
         render: () => {
             Auth.isAuthenticated = false;
             Auth.user = null;
-            return m(login);
+            m.route.set("/logga-in");
         },
     },
 });

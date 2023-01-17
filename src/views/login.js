@@ -5,6 +5,10 @@ const login = {
     view: () => {
         return m("div.container.flex-grow-1.mt-5", [
             m("div.row.justify-content-center ", [
+                m("div.text-center", [
+                    m("h1.text-muted.mb-4", "Välkommen till Spark!"),
+                    m("p.lead.mb-5"),
+                ]),
                 m("div.col-md-9.col-lg-12.col-xl-10", [
                     m("div.card.shadow-lg.o-hidden.my-5.border-0", [
                         m("div.card-body.p-0", [
@@ -86,6 +90,7 @@ const login = {
                                                                 "click",
                                                                 () => {
                                                                     Auth.loginWithGoogle();
+
                                                                     Auth.checkAuth();
                                                                 }
                                                             );
@@ -106,7 +111,6 @@ const login = {
                                                                 "click",
                                                                 () => {
                                                                     Auth.loginWithGithub();
-                                                                    Auth.checkAuth();
                                                                 }
                                                             );
                                                         },

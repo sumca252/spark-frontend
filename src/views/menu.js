@@ -4,6 +4,14 @@ const menu = {
     view: function (vnode) {
         let navLinks = [
             {
+                name: "Översikt",
+                icon: "fa fa-dashboard",
+                class: "Översikt",
+                nav: () => {
+                    m.route.set("/");
+                },
+            },
+            {
                 name: "Adminstratörer",
                 icon: "fa fa-user",
                 class: "Adminstratörer",
