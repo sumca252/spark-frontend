@@ -3,8 +3,8 @@ import m from "mithril";
 import Customers from "../models/customers";
 
 const CustomerDetails = {
-    oncreate: async (vnode) => {
-        await Customers.getCustomerById(vnode.attrs.id);
+    oncreate: (vnode) => {
+        Customers.getCustomerById(vnode.attrs.id);
     },
     view: function (vnode) {
         return m("div.mt-5", [

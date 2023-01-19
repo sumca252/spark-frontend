@@ -2,8 +2,8 @@ import m from "mithril";
 import Scooters from "../models/scooters";
 
 const moveScooter = {
-    oninit: () => {
-        Scooters.getAllScooters();
+    oncreate: (vnode) => {
+        Scooters.getScooterById(vnode.attrs.id);
     },
     view: function () {
         return m("div.mt-5", [
