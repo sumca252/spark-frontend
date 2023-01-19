@@ -4,6 +4,8 @@ import Auth from "./models/auth.js";
 
 import layout from "./views/layout.js";
 
+import overview from "./views/overview.js";
+
 import admin from "./views/admin.js";
 
 import cities from "./views/cities.js";
@@ -21,7 +23,8 @@ import register from "./views/register.js";
 
 import settings from "./views/settings.js";
 
-import overview from "./views/overview.js";
+import scooters from "./views/scooters.js";
+import moveScooter from "./views/moveScooter.js";
 
 m.route(document.body, "/", {
     "/": {
@@ -117,6 +120,26 @@ m.route(document.body, "/", {
         render: () => {
             if (Auth.isAuthenticated) {
                 return m(layout, { selected: "Inställningar" }, m(settings));
+            }
+            m.route.set("/logga-in");
+        },
+    },
+    "/sparkcyklar": {
+        render: () => {
+            if (Auth.isAuthenticated) {
+                return m(layout, { selected: "sparkcyklar" }, m(scooters));
+            }
+            m.route.set("/logga-in");
+        },
+    },
+    "/sparkcyklar/:id": {
+        render: () => {
+            if (Auth.isAuthenticated) {
+                return m(
+                    layout,
+                    { selected: "sparkcyklar" },
+                    m(moveScooter, { id: m.route.param("id") })
+                );
             }
             m.route.set("/logga-in");
         },

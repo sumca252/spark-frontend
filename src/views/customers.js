@@ -66,7 +66,7 @@ const customers = {
                                         Customers.allCustomers &&
                                             Customers.allCustomers.map(
                                                 (customer) => {
-                                                    return m("tr.text-center", [
+                                                    return m("tr", [
                                                         m("td", customer.id),
                                                         m(
                                                             "td",

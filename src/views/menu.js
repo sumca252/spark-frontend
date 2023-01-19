@@ -54,6 +54,14 @@ const menu = {
                 },
             },
             {
+                name: "Sparkcyklar",
+                icon: "fa-solid fa-bicycle",
+                class: "Sparkcyklar",
+                nav: () => {
+                    m.route.set("/sparkcyklar");
+                },
+            },
+            {
                 name: "Logga ut",
                 icon: "fa fa-sign-out",
                 class: "Logga",

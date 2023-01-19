@@ -41,13 +41,6 @@ const Scooters = {
             })
             .then((result) => {
                 Scooters.allScooters = result.data.getAllScooters;
-
-                Scooters.scooter = result.data.getAllScooters.filter(
-                    (scooter) => {
-                        return scooter.id > 1 && scooter.id <= 1000;
-                    }
-                );
-                console.log(Scooters.scooter);
             });
     },
     getScooterById: (id) => {
@@ -84,6 +77,39 @@ const Scooters = {
             })
             .then((result) => {
                 Scooters.scooter = result.data.getScooterById;
+            });
+    },
+    moveScooter: () => {
+        const query = `
+            mutation {
+                updateScooterById(
+                    id: "${Scooters.scooter.id}",
+                    battery: "${Scooters.scooter.battery}",
+                    status_id: "${Scooters.scooter.status.id}",
+                    longitude: "${Scooters.scooter.longitude}",
+                    latitude: "${Scooters.scooter.latitude}",
+                    price_id: "${Scooters.scooter.price.id}",
+                    speed: "${Scooters.scooter.speed}",
+                    station_id: "${Scooters.scooter.station.id}",
+                ) {
+                    id,
+                }
+            }
+        `;
+
+        return m
+            .request({
+                method: "POST",
+                url: `${Scooters.url}/graphql`,
+                body: {
+                    query: query,
+                },
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+            .then((result) => {
+                console.log(result);
             });
     },
 };
