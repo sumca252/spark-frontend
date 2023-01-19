@@ -14,6 +14,7 @@ const User = {
                     id: "${Auth.user.id}",
                     firstName: "${Auth.user.firstName}",
                     lastName: "${Auth.user.lastName}",
+                    username: "${Auth.user.username}",
                     password: "${Auth.user.password}"
                     email: "${Auth.user.email}",
                     phone: "${Auth.user.phone}",
