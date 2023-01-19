@@ -1,13 +1,26 @@
-import Auth from "./models/auth.js";
-import admin from "./views/admin.js";
-import cities from "./views/cities.js";
-import customers from "./views/customers.js";
-import layout from "./views/layout.js";
-import login from "./views/login.js";
 import m from "mithril";
-import register from "./views/register.js";
-import settings from "./views/settings.js";
+
+import Auth from "./models/auth.js";
+
+import layout from "./views/layout.js";
+
+import admin from "./views/admin.js";
+
+import cities from "./views/cities.js";
+import addCity from "./views/addCity.js";
+
 import stations from "./views/stations.js";
+import addStation from "./views/addStation.js";
+
+import customers from "./views/customers.js";
+import CustomerDetails from "./views/customerDetails.js";
+import editCustomer from "./views/editCustomer.js";
+
+import login from "./views/login.js";
+import register from "./views/register.js";
+
+import settings from "./views/settings.js";
+
 import overview from "./views/overview.js";
 
 m.route(document.body, "/", {
@@ -28,10 +41,42 @@ m.route(document.body, "/", {
             m.route.set("/logga-in");
         },
     },
+    "/admin/:id": {
+        render: () => {
+            if (Auth.isAuthenticated === true) {
+                return m(layout, { selected: "Adminstratörer" }, m(admin));
+            }
+            m.route.set("/logga-in");
+        },
+    },
     "/kunder": {
         render: () => {
             if (Auth.isAuthenticated === true) {
                 return m(layout, { selected: "Kunder" }, m(customers));
+            }
+            m.route.set("/logga-in");
+        },
+    },
+    "/kunder/granska/:id": {
+        render: () => {
+            if (Auth.isAuthenticated === true) {
+                return m(
+                    layout,
+                    { selected: "Kunder" },
+                    m(CustomerDetails, { id: m.route.param("id") })
+                );
+            }
+            m.route.set("/logga-in");
+        },
+    },
+    "/kunder/redigera/:id": {
+        render: () => {
+            if (Auth.isAuthenticated === true) {
+                return m(
+                    layout,
+                    { selected: "Kunder" },
+                    m(editCustomer, { id: m.route.param("id") })
+                );
             }
             m.route.set("/logga-in");
         },
@@ -44,10 +89,26 @@ m.route(document.body, "/", {
             m.route.set("/logga-in");
         },
     },
+    "/stader/skapa": {
+        render: () => {
+            if (Auth.isAuthenticated) {
+                return m(layout, { selected: "Städer" }, m(addCity));
+            }
+            m.route.set("/logga-in");
+        },
+    },
     "/stationer": {
         render: () => {
             if (Auth.isAuthenticated) {
                 return m(layout, { selected: "Stationer" }, m(stations));
+            }
+            m.route.set("/logga-in");
+        },
+    },
+    "/station/skapa": {
+        render: () => {
+            if (Auth.isAuthenticated) {
+                return m(layout, { selected: "Stationer" }, m(addStation));
             }
             m.route.set("/logga-in");
         },
@@ -74,9 +135,7 @@ m.route(document.body, "/", {
 
     "/logga-ut": {
         render: () => {
-            Auth.isAuthenticated = false;
-            Auth.user = null;
-            m.route.set("/logga-in");
+            Auth.logout();
         },
     },
 });

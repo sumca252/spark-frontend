@@ -90,10 +90,10 @@ const login = {
                                                                 "click",
                                                                 () => {
                                                                     Auth.loginWithGoogle();
-
-                                                                    Auth.checkAuth();
                                                                 }
                                                             );
+
+                                                            Auth.checkAuth();
                                                         },
                                                     },
                                                     [
@@ -113,6 +113,8 @@ const login = {
                                                                     Auth.loginWithGithub();
                                                                 }
                                                             );
+
+                                                            Auth.checkAuth();
                                                         },
                                                     },
                                                     [

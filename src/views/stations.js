@@ -9,7 +9,25 @@ const stations = {
     view: function () {
         return m("div.mt-5", [
             m("div.container-fluid", [
-                m("h3.text-dark.mb-4", "Stationer"),
+                m("div.row", [
+                    m("div.col-lg-6", [m("h3.text-dark.mb-4", "Stationer")]),
+                    m("div.col-lg-6", [
+                        m("div.text-lg-end.dataTables_filter", [
+                            m(
+                                "button.btn.btn-success.shadow-sm.rounded",
+                                {
+                                    onclick: () => {
+                                        m.route.set("/station/skapa");
+                                    },
+                                },
+                                [
+                                    m("i.fa.fa-plus.fa-sm.me-2"),
+                                    m("span.me-2", "Lägg till station"),
+                                ]
+                            ),
+                        ]),
+                    ]),
+                ]),
                 m("div.card.shadow.bg-white", [
                     m("div.card-header.py-3", [
                         m(

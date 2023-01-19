@@ -14,6 +14,7 @@ const Auth = {
         role: "",
         roleId: 1,
     },
+    token: "",
     isAuthenticated: false,
     register: () => {
         return m
@@ -81,6 +82,7 @@ const Auth = {
             })
             .then((response) => {
                 if (response.status === 200 && response.user) {
+                    Auth.user.id = response.user.id;
                     Auth.user.firstName = response.user.first_name;
                     Auth.user.lastName = response.user.last_name;
                     Auth.user.username = response.user.username;
@@ -88,12 +90,18 @@ const Auth = {
                     Auth.user.phone = response.user.phone;
                     Auth.user.role = response.user.role;
                     Auth.user.roleId = response.user.role_id;
-                    localStorage.setItem("user", JSON.stringify(Auth.user));
                     Auth.isAuthenticated = true;
 
                     m.route.set("/");
                 }
             });
+    },
+    logout: () => {
+        Auth.isAuthenticated = false;
+        Auth.user = {};
+        Auth.token = "";
+
+        return m.route.set("/logga-in");
     },
 };
 

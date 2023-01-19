@@ -5,12 +5,13 @@ const Customers = {
         ? process.env.DEV_API_BASE_URL
         : process.env.PROD_API_BASE_URL,
     allCustomers: [],
-    customer: [],
+    customer: {},
     getAllCustomers: () => {
         const query = `{
             getAllCustomers{
               id,
               user {
+                id
                 first_name
                 last_name
                 username
@@ -35,39 +36,42 @@ const Customers = {
             })
             .then((response) => {
                 Customers.allCustomers = response.data.getAllCustomers.slice(
-                    0,
-                    10
+                    10,
+                    20
                 );
             });
     },
     getCustomerById: (customerId) => {
-        const query = `{
-            getCustomerById(id: "${customerId}") {
-              id,
-              user {
-                first_name
-                last_name
-                username
-                email
-                phone
-                role
-              }
-            }
-          
-          }`;
+        const query = `
+            {
+                getCustomerById(id: "${customerId}") {
+                    id,
+                    user {
+                        id
+                        first_name
+                        last_name
+                        username
+                        email
+                        phone
+                        role
+                    }
+                }
+            }`;
 
-        m.request({
-            method: "POST",
-            url: `${Customers.url}/graphql`,
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: {
-                query: query,
-            },
-        }).then((response) => {
-            Customers.customer = response.data.getAllCustomers.slice(0, 10);
-        });
+        return m
+            .request({
+                method: "POST",
+                url: `${Customers.url}/graphql`,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: {
+                    query: query,
+                },
+            })
+            .then((response) => {
+                Customers.customer = response.data.getCustomerById;
+            });
     },
 };
 

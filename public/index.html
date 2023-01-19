@@ -6,7 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
             http-equiv="Content-Security-Policy"
-            content="default-src 'self' *.unsplash.com localhost:1337 spark.isal.live;  font-src *; style-src * cdnjs.cloudflare.com; script-src * cdnjs.cloudflare.com; "
+            content="default-src 'self' 
+                *.unsplash.com 
+                http://localhost:1337 http://localhost
+                spark.isal.live;  
+                font-src 'self' fonts.gstatic.com fonts.googleapis.com cdnjs.cloudflare.com;
+                style-src 'self' 'unsafe-inline' fonts.googleapis.com cdnjs.cloudflare.com;  
+                script-src 'self' 'unsafe-eval' cdnjs.cloudflare.com; 
+                img-src * data: blob: cdnjs.cloudflare.com"
         />
         <title>Spark</title>
         <link rel="stylesheet" href="/css/style.min.css" />

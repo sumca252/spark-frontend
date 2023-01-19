@@ -6,7 +6,7 @@ const customers = {
     oncreate: () => {
         Customers.getAllCustomers();
     },
-    view: function () {
+    view: () => {
         return m("div.mt-5", [
             m("div.container-fluid", [
                 m("h3.text-dark.mb-4", "Kunder"),
@@ -101,9 +101,9 @@ const customers = {
                                                         ),
                                                         m("td", [
                                                             m(
-                                                                "a.btn.btn-secondary.btn-sm.me-2",
+                                                                "a.btn.btn-success.btn-sm.me-2",
                                                                 {
-                                                                    href: `/customers/${customer.id}`,
+                                                                    href: `#!/kunder/granska/${customer.id}`,
                                                                 },
                                                                 m("i.fa.fa-eye")
                                                             ),
@@ -111,20 +111,10 @@ const customers = {
                                                             m(
                                                                 "a.btn.btn-info.btn-sm.me-2",
                                                                 {
-                                                                    href: `/customers/${customer.id}/edit`,
+                                                                    href: `#!/kunder/redigera/${customer.id}`,
                                                                 },
                                                                 m(
                                                                     "i.fa.fa-edit"
-                                                                )
-                                                            ),
-
-                                                            m(
-                                                                "a.btn.btn-danger.btn-sm.me-2",
-                                                                {
-                                                                    href: `/customers/${customer.id}/delete`,
-                                                                },
-                                                                m(
-                                                                    "i.fa.fa-trash"
                                                                 )
                                                             ),
                                                         ]),

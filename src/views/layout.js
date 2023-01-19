@@ -16,8 +16,16 @@ const layout = {
                                 "data-toggle": "collapse",
                                 "data-target": "#navcol-1",
                                 "aria-controls": "navcol-1",
-                                "aria-expanded": "false",
+                                "aria-expanded": "true",
                                 "aria-label": "Toggle navigation",
+                                onclick: () => {
+                                    document
+                                        .querySelector(".navbar-toggler")
+                                        .classList.toggle("collapsed");
+                                    document
+                                        .querySelector(".navbar-collapse")
+                                        .classList.toggle("show");
+                                },
                             },
                             [
                                 m("span.sr-only", "Toggle navigation"),

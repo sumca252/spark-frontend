@@ -1,3 +1,6 @@
+/**
+ * Configuration file for production
+ */
 const path = require("path");
 
 module.exports = {

@@ -1,5 +1,7 @@
 import m from "mithril";
 
+import Auth from "../models/auth";
+
 const menu = {
     view: function (vnode) {
         let navLinks = [
@@ -56,7 +58,7 @@ const menu = {
                 icon: "fa fa-sign-out",
                 class: "Logga",
                 nav: () => {
-                    m.route.set("/logout");
+                    m.route.set("/logga-ut");
                 },
             },
         ];
@@ -71,7 +73,7 @@ const menu = {
                         onclick: elem.nav,
                     },
                     [
-                        m("i", { class: `me-3 ${elem.icon}` }),
+                        m("i", { class: `me-2 ${elem.icon}` }),
                         m("span", elem.name),
                     ]
                 ),

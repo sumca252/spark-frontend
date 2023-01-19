@@ -1,12 +1,20 @@
+/**
+ * Configuration file for development
+ */
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+
 const dotenv = require("dotenv-webpack");
 const port = process.env.PORT || 3000;
 
 module.exports = {
-    mode: "production",
+    mode: "development",
     entry: "./src/index.js",
-    plugins: [new dotenv()],
+    devtool: "inline-source-map",
+    plugins: [
+        new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
+        new dotenv(),
+    ],
     output: {
         filename: "dist/bundle.js",
         path: path.resolve(__dirname, "build"),
@@ -35,17 +43,11 @@ module.exports = {
         port: port,
         open: true,
         host: "localhost",
-        historyApiFallback: {
-            index: "index.html",
-        },
+        historyApiFallback: true,
         static: {
             directory: path.join(__dirname, "public"),
         },
         hot: true,
         compress: false,
-    },
-
-    watchOptions: {
-        poll: 1000,
     },
 };

@@ -10,13 +10,18 @@ const admin = {
     view: function () {
         return m("div.mt-5", [
             m("div.container-fluid", [
-                m("h3.text-dark.mb-4", "Adminstratörer"),
+                m("div.row", [
+                    m("div.col-lg-6", [
+                        m("h3.text-dark.mb-4", "Adminstratörer"),
+                    ]),
+                ]),
+
                 m("div.card.shadow.bg-white", [
                     m("div.card-header.py-3", [
                         m("p.text-primary.m-0.font-weight-bold", "Adminslista"),
                     ]),
                     m("div.card-body", [
-                        m("div.row", [
+                        /* m("div.row", [
                             m("div.col-md-6.text-nowrap", [
                                 m("div.dataTables_length", [
                                     m("label.form-label", [
@@ -41,7 +46,7 @@ const admin = {
                                     ]),
                                 ]),
                             ]),
-                        ]),
+                        ]), */
                         m("div.table-responsive.table.table-hover.mt-2", [
                             m(
                                 "table.table.table-striped.table-bordered.table-hover",
@@ -55,7 +60,7 @@ const admin = {
                                             m("th", "E-post"),
                                             m("th", "Telefon"),
                                             m("th", "Roll"),
-                                            m("th", "Åtgärd"),
+                                            /*    m("th", "Åtgärd"), */
                                         ]),
                                     ]),
                                     m("tbody", [
@@ -70,7 +75,7 @@ const admin = {
                                                     m("td", admin.phone),
                                                     m("td", admin.role),
 
-                                                    m("td", [
+                                                    /* m("td", [
                                                         m(
                                                             "a.btn.btn-secondary.btn-sm.me-2",
                                                             {
@@ -93,21 +98,21 @@ const admin = {
                                                             },
                                                             m("i.fa.fa-trash")
                                                         ),
-                                                    ]),
+                                                    ]), */
                                                 ]);
                                             }),
                                     ]),
                                 ]
                             ),
                         ]),
-                        m("div.row", [
+                        /* m("div.row", [
                             m("div.col-md-6.align-self-center", [
                                 m(
                                     "p.dataTables_info",
                                     `Visar 1 till ${Admins.allAdmins.length} av ${Admins.allAdmins.length} rad(er)`
                                 ),
                             ]),
-                        ]),
+                        ]), */
                     ]),
                 ]),
             ]),

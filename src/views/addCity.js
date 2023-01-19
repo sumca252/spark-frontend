@@ -2,11 +2,11 @@ import m from "mithril";
 
 import Auth from "../models/auth";
 
-const settings = {
+const addCity = {
     view: function () {
         return m("div.mt-5", [
             m("div.container-fluid", [
-                m("h3.text-dark.mb-4", "Profil"),
+                m("h3.text-dark.mb-4", "Lägg till stad"),
                 m("div.row.mb-3", [
                     m("div.col-lg", [
                         m("div.row", [
@@ -15,7 +15,7 @@ const settings = {
                                     m("div.card-header.py-3", [
                                         m(
                                             "p.text-primary.m-0.font-weight-bold",
-                                            "Personuppgifter"
+                                            "Stad"
                                         ),
                                     ]),
                                     m("div.card-body", [
@@ -33,17 +33,14 @@ const settings = {
                                                         m("div.mb-3", [
                                                             m(
                                                                 "label.form-label",
-                                                                "Förnamn"
+                                                                "Namn"
                                                             ),
                                                             m(
                                                                 "input.form-control",
                                                                 {
                                                                     type: "text",
                                                                     placeholder:
-                                                                        "Förnamn",
-                                                                    value: Auth
-                                                                        .user
-                                                                        .firstName,
+                                                                        "Namn",
                                                                 }
                                                             ),
                                                         ]),
@@ -52,17 +49,14 @@ const settings = {
                                                         m("div.mb-3", [
                                                             m(
                                                                 "label.form-label",
-                                                                "Efternamn"
+                                                                "Land"
                                                             ),
                                                             m(
                                                                 "input.form-control",
                                                                 {
                                                                     type: "text",
                                                                     placeholder:
-                                                                        "Efternamn",
-                                                                    value: Auth
-                                                                        .user
-                                                                        .lastName,
+                                                                        "Land",
                                                                 }
                                                             ),
                                                         ]),
@@ -73,57 +67,14 @@ const settings = {
                                                         m("div.mb-3", [
                                                             m(
                                                                 "label.form-label",
-                                                                "Lösenord"
-                                                            ),
-                                                            m(
-                                                                "input.form-control",
-                                                                {
-                                                                    type: "password",
-                                                                    placeholder:
-                                                                        "Lösenord",
-                                                                    value: Auth
-                                                                        .user
-                                                                        .password,
-                                                                }
-                                                            ),
-                                                        ]),
-                                                    ]),
-                                                    m("div.col", [
-                                                        m("div.mb-3", [
-                                                            m(
-                                                                "label.form-label",
-                                                                "E-post adress"
-                                                            ),
-                                                            m(
-                                                                "input.form-control",
-                                                                {
-                                                                    type: "email",
-                                                                    placeholder:
-                                                                        "E-post adress",
-                                                                    value: Auth
-                                                                        .user
-                                                                        .email,
-                                                                }
-                                                            ),
-                                                        ]),
-                                                    ]),
-                                                ]),
-                                                m("div.row", [
-                                                    m("div.col", [
-                                                        m("div.mb-3", [
-                                                            m(
-                                                                "label.form-label",
-                                                                "Användarnamn"
+                                                                "Longitud"
                                                             ),
                                                             m(
                                                                 "input.form-control",
                                                                 {
                                                                     type: "text",
                                                                     placeholder:
-                                                                        "Användarnamn",
-                                                                    value: Auth
-                                                                        .user
-                                                                        .username,
+                                                                        "Longitud",
                                                                 }
                                                             ),
                                                         ]),
@@ -132,17 +83,32 @@ const settings = {
                                                         m("div.mb-3", [
                                                             m(
                                                                 "label.form-label",
-                                                                "Telefonnummer"
+                                                                "Latitud"
                                                             ),
                                                             m(
                                                                 "input.form-control",
                                                                 {
-                                                                    type: "tel",
+                                                                    type: "text",
                                                                     placeholder:
-                                                                        "Telefonnummer",
-                                                                    value: Auth
-                                                                        .user
-                                                                        .phone,
+                                                                        "Latitud",
+                                                                }
+                                                            ),
+                                                        ]),
+                                                    ]),
+                                                ]),
+                                                m("div.row", [
+                                                    m("div.col-12", [
+                                                        m("div.mb-3", [
+                                                            m(
+                                                                "label.form-label",
+                                                                "Yta (km2)"
+                                                            ),
+                                                            m(
+                                                                "input.form-control",
+                                                                {
+                                                                    type: "text",
+                                                                    placeholder:
+                                                                        "Yta (km2)",
                                                                 }
                                                             ),
                                                         ]),
@@ -153,10 +119,13 @@ const settings = {
 
                                         m(
                                             "div.m-3.text-center",
-                                            m(
-                                                "button.btn.btn-primary.btn-sm",
-                                                "Spara ändringar"
-                                            )
+                                            m("button.btn.btn-primary.btn-sm", [
+                                                m("i.fa.fa-plus.fa-sm.me-2"),
+                                                m(
+                                                    "span.me-2",
+                                                    "Lägg till stad"
+                                                ),
+                                            ])
                                         ),
                                     ]),
                                 ]),
@@ -169,4 +138,4 @@ const settings = {
     },
 };
 
-export default settings;
+export default addCity;

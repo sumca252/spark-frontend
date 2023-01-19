@@ -1,12 +1,16 @@
 import m from "mithril";
 
-import Auth from "../models/auth";
+import Customers from "../models/customers.js";
 
-const settings = {
-    view: function () {
+const editCustomer = {
+    oninit: (vnode) => {
+        Customers.getCustomerById(vnode.attrs.id);
+        console.log("edit", Customers.customer[0]);
+    },
+    view: () => {
         return m("div.mt-5", [
             m("div.container-fluid", [
-                m("h3.text-dark.mb-4", "Profil"),
+                m("h3.text-dark.mb-4", "Kund Detaljer"),
                 m("div.row.mb-3", [
                     m("div.col-lg", [
                         m("div.row", [
@@ -24,7 +28,7 @@ const settings = {
                                             {
                                                 onsubmit: function (e) {
                                                     e.preventDefault();
-                                                    Auth.updateUser();
+                                                    // Customers.updateUser();
                                                 },
                                             },
                                             [
@@ -41,9 +45,10 @@ const settings = {
                                                                     type: "text",
                                                                     placeholder:
                                                                         "Förnamn",
-                                                                    value: Auth
+                                                                    value: Customers
+                                                                        .customer[0]
                                                                         .user
-                                                                        .firstName,
+                                                                        .first_name,
                                                                 }
                                                             ),
                                                         ]),
@@ -60,9 +65,10 @@ const settings = {
                                                                     type: "text",
                                                                     placeholder:
                                                                         "Efternamn",
-                                                                    value: Auth
+                                                                    value: Customers
+                                                                        .customer[0]
                                                                         .user
-                                                                        .lastName,
+                                                                        .last_name,
                                                                 }
                                                             ),
                                                         ]),
@@ -73,34 +79,16 @@ const settings = {
                                                         m("div.mb-3", [
                                                             m(
                                                                 "label.form-label",
-                                                                "Lösenord"
-                                                            ),
-                                                            m(
-                                                                "input.form-control",
-                                                                {
-                                                                    type: "password",
-                                                                    placeholder:
-                                                                        "Lösenord",
-                                                                    value: Auth
-                                                                        .user
-                                                                        .password,
-                                                                }
-                                                            ),
-                                                        ]),
-                                                    ]),
-                                                    m("div.col", [
-                                                        m("div.mb-3", [
-                                                            m(
-                                                                "label.form-label",
                                                                 "E-post adress"
                                                             ),
                                                             m(
                                                                 "input.form-control",
                                                                 {
-                                                                    type: "email",
+                                                                    type: "tel",
                                                                     placeholder:
                                                                         "E-post adress",
-                                                                    value: Auth
+                                                                    value: Customers
+                                                                        .customer[0]
                                                                         .user
                                                                         .email,
                                                                 }
@@ -121,7 +109,8 @@ const settings = {
                                                                     type: "text",
                                                                     placeholder:
                                                                         "Användarnamn",
-                                                                    value: Auth
+                                                                    value: Customers
+                                                                        .customer[0]
                                                                         .user
                                                                         .username,
                                                                 }
@@ -140,7 +129,8 @@ const settings = {
                                                                     type: "tel",
                                                                     placeholder:
                                                                         "Telefonnummer",
-                                                                    value: Auth
+                                                                    value: Customers
+                                                                        .customer[0]
                                                                         .user
                                                                         .phone,
                                                                 }
@@ -149,14 +139,6 @@ const settings = {
                                                     ]),
                                                 ]),
                                             ]
-                                        ),
-
-                                        m(
-                                            "div.m-3.text-center",
-                                            m(
-                                                "button.btn.btn-primary.btn-sm",
-                                                "Spara ändringar"
-                                            )
                                         ),
                                     ]),
                                 ]),
@@ -169,4 +151,4 @@ const settings = {
     },
 };
 
-export default settings;
+export default editCustomer;

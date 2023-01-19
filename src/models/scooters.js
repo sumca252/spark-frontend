@@ -42,7 +42,12 @@ const Scooters = {
             .then((result) => {
                 Scooters.allScooters = result.data.getAllScooters;
 
-                Scooters.scooter = result.data.getAllScooters.slice(0, 1000);
+                Scooters.scooter = result.data.getAllScooters.filter(
+                    (scooter) => {
+                        return scooter.id > 1 && scooter.id <= 1000;
+                    }
+                );
+                console.log(Scooters.scooter);
             });
     },
     getScooterById: (id) => {

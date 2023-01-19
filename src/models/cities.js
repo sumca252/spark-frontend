@@ -6,6 +6,13 @@ const Cities = {
         : process.env.PROD_API_BASE_URL,
     allCitites: [],
     city: [],
+    newCity: {
+        name: "",
+        country: "",
+        longitude: "",
+        latitude: "",
+        area: "",
+    },
     getAllCities: () => {
         const query = `
             {
@@ -34,6 +41,10 @@ const Cities = {
             })
             .then((response) => {
                 Cities.allCities = response.data.getAllCities;
+                console.log(Cities.allCities);
+            })
+            .catch((error) => {
+                console.log(error);
             });
     },
     getCityById: (cityId) => {
@@ -62,6 +73,35 @@ const Cities = {
             },
         }).then((response) => {
             Cities.city = response.data.getCityById;
+        });
+    },
+    addCity: () => {
+        const mutation = `
+            mutation {
+                addCity(
+                    name: "${Cities.newCity.name}",
+                    country: "${Cities.newCity.country}",
+                    longitude: "${Cities.newCity.longitude}",
+                    latitude: "${Cities.newCity.latitude}",
+                    area: "${Cities.newCity.area}"
+                )
+                {
+                    id
+                }
+            }
+            `;
+
+        m.request({
+            method: "POST",
+            url: `${Cities.url}/graphql`,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: {
+                query: mutation,
+            },
+        }).then((response) => {
+            console.log(response);
         });
     },
 };
