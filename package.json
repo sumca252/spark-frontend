@@ -5,6 +5,9 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
+        "posttest": "npm run eslint",
+        "eslint": "eslint \"src/**/*.js\"",
+        "fix": "eslint \"src/**/*.js\" --fix",
         "dev": "npm run style && webpack-dev-server --config webpack.dev.config.js",
         "build": "npm run style && webpack --config webpack.prod.config.js",
         "prod": "webpack-dev-server --host 0.0.0.0 --config webpack.dev.config.js",

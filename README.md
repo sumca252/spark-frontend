@@ -23,9 +23,6 @@ $ npm run build
 ```bash
 # unit tests
 $ npm run test
-
-# test coverage
-$ npm run test:cov
 ```
 
 ## EsLint
