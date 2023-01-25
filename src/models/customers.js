@@ -69,7 +69,6 @@ const Customers = {
             .then((response) => {
                 if (response.data.getCustomerById) {
                     Customers.customer = response.data.getCustomerById;
-                    console.log(Customers.customer);
                 }
             });
     },

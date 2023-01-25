@@ -3,9 +3,8 @@ import m from "mithril";
 import Customers from "../models/customers";
 
 const CustomerDetails = {
-    oninit: async (vnode) => {
-        await Customers.getCustomerById(vnode.attrs.id);
-        console.log(" CustomerDetails oninit", Customers.customer[0]);
+    oninit: (vnode) => {
+        Customers.getCustomerById(vnode.attrs.id);
     },
     view: () => {
         return m("div.mt-5", [
