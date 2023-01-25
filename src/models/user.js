@@ -26,7 +26,6 @@ const User = {
             }
             `;
 
-        console.log(mutation);
         return m
             .request({
                 method: "POST",
@@ -39,7 +38,9 @@ const User = {
                 },
             })
             .then((result) => {
-                console.log(result);
+                if (result.data) {
+                    m.route.set("/admin");
+                }
             });
     },
 };

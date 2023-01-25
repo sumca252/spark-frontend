@@ -1,14 +1,13 @@
 import m from "mithril";
 
 import Auth from "../models/auth";
-import Citites from "../models/cities";
+import Cities from "../models/cities";
 
 import Stations from "../models/stations";
 
 const addStation = {
-    oncreate: () => {
-        Citites.getAllCities();
-        Citites.allCitites;
+    oninit: () => {
+        Cities.getAllCities();
     },
     view: function () {
         return m("div.mt-5", [
@@ -48,9 +47,12 @@ const addStation = {
                                                                     type: "text",
                                                                     placeholder:
                                                                         "Namn",
-                                                                    value: Stations
-                                                                        .newStation
-                                                                        .name,
+                                                                    oninput: (
+                                                                        e
+                                                                    ) => {
+                                                                        Stations.newStation.name =
+                                                                            e.target.value;
+                                                                    },
                                                                 }
                                                             ),
                                                         ]),
@@ -63,6 +65,14 @@ const addStation = {
                                                             ),
                                                             m(
                                                                 "select.form-select",
+                                                                {
+                                                                    onchange: (
+                                                                        e
+                                                                    ) => {
+                                                                        Stations.newStation.zoneId =
+                                                                            e.target.value;
+                                                                    },
+                                                                },
                                                                 [
                                                                     m(
                                                                         "option",
@@ -114,6 +124,12 @@ const addStation = {
                                                                     type: "text",
                                                                     placeholder:
                                                                         "Longitud",
+                                                                    oninput: (
+                                                                        e
+                                                                    ) => {
+                                                                        Stations.newStation.longitude =
+                                                                            e.target.value;
+                                                                    },
                                                                 }
                                                             ),
                                                         ]),
@@ -130,9 +146,12 @@ const addStation = {
                                                                     type: "text",
                                                                     placeholder:
                                                                         "Latitud",
-                                                                    value: Stations
-                                                                        .newStation
-                                                                        .latitud,
+                                                                    oninput: (
+                                                                        e
+                                                                    ) => {
+                                                                        Stations.newStation.latitude =
+                                                                            e.target.value;
+                                                                    },
                                                                 }
                                                             ),
                                                         ]),
@@ -147,45 +166,45 @@ const addStation = {
                                                             ),
                                                             m(
                                                                 "select.form-select",
+                                                                {
+                                                                    onchange: (
+                                                                        e
+                                                                    ) => {
+                                                                        Stations.newStation.cityId =
+                                                                            e.target.value;
+                                                                    },
+                                                                },
                                                                 [
                                                                     m(
                                                                         "option",
                                                                         "Välj stad"
                                                                     ),
-                                                                    Citites.allCitites.map(
-                                                                        (
-                                                                            city
-                                                                        ) => {
-                                                                            console.log(
+                                                                    Cities.allCities &&
+                                                                        Cities.allCities.map(
+                                                                            (
                                                                                 city
-                                                                            );
-
-                                                                            return m(
-                                                                                "option",
-                                                                                {
-                                                                                    value: city.id,
-                                                                                },
-                                                                                city.name
-                                                                            );
-                                                                        }
-                                                                    ),
+                                                                            ) => {
+                                                                                return m(
+                                                                                    "option",
+                                                                                    {
+                                                                                        value: city.id,
+                                                                                    },
+                                                                                    city.name
+                                                                                );
+                                                                            }
+                                                                        ),
                                                                 ]
                                                             ),
                                                         ]),
                                                     ]),
                                                 ]),
-                                            ]
-                                        ),
-
-                                        m(
-                                            "div.m-3.text-center",
-                                            m("button.btn.btn-primary.btn-sm", [
-                                                m("i.fa.fa-plus.fa-sm.me-2"),
+                                            ],
+                                            m(
+                                                "div.m-3.text-center",
                                                 m(
-                                                    "span.me-2",
-                                                    "Lägg till station"
-                                                ),
-                                            ])
+                                                    "input[type=submit][value=Lägg till station].btn.btn-primary"
+                                                )
+                                            )
                                         ),
                                     ]),
                                 ]),

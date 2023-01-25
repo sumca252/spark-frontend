@@ -41,7 +41,6 @@ const Cities = {
             })
             .then((response) => {
                 Cities.allCities = response.data.getAllCities;
-                console.log(Cities.allCities);
             })
             .catch((error) => {
                 console.log(error);

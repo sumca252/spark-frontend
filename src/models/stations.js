@@ -87,18 +87,23 @@ const Stations = {
             }
             `;
 
-        m.request({
-            method: "POST",
-            url: `${Stations.url}/graphql`,
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: {
-                query: mutations,
-            },
-        })
+        console.log(mutations);
+
+        return m
+            .request({
+                method: "POST",
+                url: `${Stations.url}/graphql`,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: {
+                    query: mutations,
+                },
+            })
             .then((response) => {
-                console.log(response);
+                if (response.data) {
+                    m.route.set("/stationer");
+                }
             })
             .catch((error) => {
                 console.log(error);
