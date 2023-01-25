@@ -1,6 +1,6 @@
 import m from "mithril";
 
-import Auth from "../models/auth";
+import Cities from "../models/cities.js";
 
 const addCity = {
     view: function () {
@@ -24,7 +24,7 @@ const addCity = {
                                             {
                                                 onsubmit: function (e) {
                                                     e.preventDefault();
-                                                    Auth.updateUser();
+                                                    Cities.addCity();
                                                 },
                                             },
                                             [
@@ -41,6 +41,12 @@ const addCity = {
                                                                     type: "text",
                                                                     placeholder:
                                                                         "Namn",
+                                                                    oninput: (
+                                                                        e
+                                                                    ) => {
+                                                                        Cities.newCity.name =
+                                                                            e.target.value;
+                                                                    },
                                                                 }
                                                             ),
                                                         ]),
@@ -57,6 +63,12 @@ const addCity = {
                                                                     type: "text",
                                                                     placeholder:
                                                                         "Land",
+                                                                    oninput: (
+                                                                        e
+                                                                    ) => {
+                                                                        Cities.newCity.country =
+                                                                            e.target.value;
+                                                                    },
                                                                 }
                                                             ),
                                                         ]),
@@ -75,6 +87,12 @@ const addCity = {
                                                                     type: "text",
                                                                     placeholder:
                                                                         "Longitud",
+                                                                    oninput: (
+                                                                        e
+                                                                    ) => {
+                                                                        Cities.newCity.longitude =
+                                                                            e.target.value;
+                                                                    },
                                                                 }
                                                             ),
                                                         ]),
@@ -91,6 +109,12 @@ const addCity = {
                                                                     type: "text",
                                                                     placeholder:
                                                                         "Latitud",
+                                                                    oninput: (
+                                                                        e
+                                                                    ) => {
+                                                                        Cities.newCity.latitude =
+                                                                            e.target.value;
+                                                                    },
                                                                 }
                                                             ),
                                                         ]),
@@ -109,23 +133,24 @@ const addCity = {
                                                                     type: "text",
                                                                     placeholder:
                                                                         "Yta (km2)",
+                                                                    oninput: (
+                                                                        e
+                                                                    ) => {
+                                                                        Cities.newCity.area =
+                                                                            e.target.value;
+                                                                    },
                                                                 }
                                                             ),
                                                         ]),
                                                     ]),
                                                 ]),
-                                            ]
-                                        ),
-
-                                        m(
-                                            "div.m-3.text-center",
-                                            m("button.btn.btn-primary.btn-sm", [
-                                                m("i.fa.fa-plus.fa-sm.me-2"),
+                                            ],
+                                            m(
+                                                "div.m-3.text-center",
                                                 m(
-                                                    "span.me-2",
-                                                    "Lägg till stad"
-                                                ),
-                                            ])
+                                                    "input[type=submit][value=Lägg till stad].btn.btn-primary.btn-sm"
+                                                )
+                                            )
                                         ),
                                     ]),
                                 ]),
