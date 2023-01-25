@@ -1,6 +1,6 @@
 import m from "mithril";
 
-import Auth from "./models/auth.js";
+import Auth from "./auth.js";
 
 const User = {
     url: process.env.DEV_API_BASE_URL
@@ -8,23 +8,25 @@ const User = {
         : process.env.PROD_API_BASE_URL,
     user: {},
     updateUser: () => {
+        console.log(Auth.user);
         const mutation = `
-            mutation {
-                updateUser(
-                    id: "${Auth.user.id}",
-                    firstName: "${Auth.user.firstName}",
-                    lastName: "${Auth.user.lastName}",
-                    username: "${Auth.user.username}",
-                    password: "${Auth.user.password}"
-                    email: "${Auth.user.email}",
-                    phone: "${Auth.user.phone}",
-                    password: "${Auth.user.password}"
+        mutation {
+            updateUserById(
+                id: "${Auth.user.id}",
+                first_name: "${Auth.user.firstName}",
+                last_name: "${Auth.user.lastName}",
+                username: "${Auth.user.username}",
+                password: "${Auth.user.password}"
+                email: "${Auth.user.email}",
+                phone: "${Auth.user.phone}",
+                role_id: "${Auth.user.roleId}"
                 ) {
                     id
                 }
             }
-        `;
+            `;
 
+        console.log(mutation);
         return m
             .request({
                 method: "POST",
