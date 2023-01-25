@@ -5,6 +5,7 @@ const Auth = {
         ? process.env.DEV_API_BASE_URL
         : process.env.PROD_API_BASE_URL,
     user: {
+        id: "",
         firstName: "",
         lastName: "",
         username: "",
@@ -54,9 +55,18 @@ const Auth = {
                 },
             })
             .then((response) => {
-                if (response.status === 200) {
+                if (response.status === 200 && response.user) {
+                    console.log(response.user);
                     Auth.email = response.user.email;
-                    Auth.userId = response.user.id;
+                    Auth.user.id = response.user.id;
+                    Auth.user.firstName = response.user.first_name;
+                    Auth.user.lastName = response.user.last_name;
+                    Auth.user.username = response.user.username;
+                    Auth.user.email = response.user.email;
+                    Auth.user.phone = response.user.phone;
+
+                    Auth.token = response.token;
+
                     Auth.isAuthenticated = true;
 
                     m.route.set("/");
@@ -77,7 +87,6 @@ const Auth = {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                withCredentials: true,
             })
             .then((response) => {
                 if (response.status === 200 && response.user) {

@@ -1,9 +1,10 @@
 import m from "mithril";
 
 import Auth from "../models/auth";
+import User from "../models/user";
 
 const settings = {
-    view: function () {
+    view: () => {
         return m("div.mt-5", [
             m("div.container-fluid", [
                 m("h3.text-dark.mb-4", "Profil"),
@@ -22,9 +23,9 @@ const settings = {
                                         m(
                                             "form",
                                             {
-                                                onsubmit: function (e) {
+                                                onsubmit: (e) => {
                                                     e.preventDefault();
-                                                    Auth.updateUser();
+                                                    User.updateUser();
                                                 },
                                             },
                                             [
@@ -44,6 +45,12 @@ const settings = {
                                                                     value: Auth
                                                                         .user
                                                                         .firstName,
+                                                                    oninput: (
+                                                                        e
+                                                                    ) => {
+                                                                        Auth.user.firstName =
+                                                                            e.target.value;
+                                                                    },
                                                                 }
                                                             ),
                                                         ]),
@@ -63,6 +70,12 @@ const settings = {
                                                                     value: Auth
                                                                         .user
                                                                         .lastName,
+                                                                    oninput: (
+                                                                        e
+                                                                    ) => {
+                                                                        Auth.user.lastName =
+                                                                            e.target.value;
+                                                                    },
                                                                 }
                                                             ),
                                                         ]),
@@ -84,6 +97,12 @@ const settings = {
                                                                     value: Auth
                                                                         .user
                                                                         .password,
+                                                                    oninput: (
+                                                                        e
+                                                                    ) => {
+                                                                        Auth.user.password =
+                                                                            e.target.value;
+                                                                    },
                                                                 }
                                                             ),
                                                         ]),
@@ -103,6 +122,12 @@ const settings = {
                                                                     value: Auth
                                                                         .user
                                                                         .email,
+                                                                    oninput: (
+                                                                        e
+                                                                    ) => {
+                                                                        Auth.user.email =
+                                                                            e.target.value;
+                                                                    },
                                                                 }
                                                             ),
                                                         ]),
@@ -124,6 +149,12 @@ const settings = {
                                                                     value: Auth
                                                                         .user
                                                                         .username,
+                                                                    oninput: (
+                                                                        e
+                                                                    ) => {
+                                                                        Auth.user.username =
+                                                                            e.target.value;
+                                                                    },
                                                                 }
                                                             ),
                                                         ]),
@@ -143,20 +174,24 @@ const settings = {
                                                                     value: Auth
                                                                         .user
                                                                         .phone,
+                                                                    oninput: (
+                                                                        e
+                                                                    ) => {
+                                                                        Auth.user.phone =
+                                                                            e.target.value;
+                                                                    },
                                                                 }
                                                             ),
                                                         ]),
                                                     ]),
                                                 ]),
+                                                m(
+                                                    "div.m-3.text-center",
+                                                    m(
+                                                        "input[type=submit][value=Spara ändringar].btn.btn-primary.btn-sm"
+                                                    )
+                                                ),
                                             ]
-                                        ),
-
-                                        m(
-                                            "div.m-3.text-center",
-                                            m(
-                                                "button.btn.btn-primary.btn-sm",
-                                                "Spara ändringar"
-                                            )
                                         ),
                                     ]),
                                 ]),
