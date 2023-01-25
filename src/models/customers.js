@@ -5,7 +5,7 @@ const Customers = {
         ? process.env.DEV_API_BASE_URL
         : process.env.PROD_API_BASE_URL,
     allCustomers: [],
-    customer: {},
+    customer: [],
     getAllCustomers: () => {
         const query = `{
             getAllCustomers{
@@ -35,10 +35,7 @@ const Customers = {
                 },
             })
             .then((response) => {
-                Customers.allCustomers = response.data.getAllCustomers.slice(
-                    10,
-                    20
-                );
+                Customers.allCustomers = response.data.getAllCustomers;
             });
     },
     getCustomerById: (customerId) => {
@@ -70,7 +67,10 @@ const Customers = {
                 },
             })
             .then((response) => {
-                Customers.customer = response.data.getCustomerById;
+                if (response.data.getCustomerById) {
+                    Customers.customer = response.data.getCustomerById;
+                    console.log(Customers.customer);
+                }
             });
     },
 };
