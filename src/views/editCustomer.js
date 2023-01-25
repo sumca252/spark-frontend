@@ -5,7 +5,6 @@ import Customers from "../models/customers.js";
 const editCustomer = {
     oninit: (vnode) => {
         Customers.getCustomerById(vnode.attrs.id);
-        console.log("edit", Customers.customer[0]);
     },
     view: () => {
         return m("div.mt-5", [
@@ -28,7 +27,7 @@ const editCustomer = {
                                             {
                                                 onsubmit: function (e) {
                                                     e.preventDefault();
-                                                    // Customers.updateUser();
+                                                    Customers.updateCustomer();
                                                 },
                                             },
                                             [
@@ -46,9 +45,14 @@ const editCustomer = {
                                                                     placeholder:
                                                                         "Förnamn",
                                                                     value: Customers
-                                                                        .customer[0]
-                                                                        .user
+                                                                        .newCustomer
                                                                         .first_name,
+                                                                    oninput: (
+                                                                        e
+                                                                    ) => {
+                                                                        Customers.newCustomer.first_name =
+                                                                            e.target.value;
+                                                                    },
                                                                 }
                                                             ),
                                                         ]),
@@ -66,9 +70,15 @@ const editCustomer = {
                                                                     placeholder:
                                                                         "Efternamn",
                                                                     value: Customers
-                                                                        .customer[0]
-                                                                        .user
+                                                                        .newCustomer
                                                                         .last_name,
+
+                                                                    oninput: (
+                                                                        e
+                                                                    ) => {
+                                                                        Customers.newCustomer.last_name =
+                                                                            e.target.value;
+                                                                    },
                                                                 }
                                                             ),
                                                         ]),
@@ -88,9 +98,14 @@ const editCustomer = {
                                                                     placeholder:
                                                                         "E-post adress",
                                                                     value: Customers
-                                                                        .customer[0]
-                                                                        .user
+                                                                        .newCustomer
                                                                         .email,
+                                                                    oninput: (
+                                                                        e
+                                                                    ) => {
+                                                                        Customers.newCustomer.email =
+                                                                            e.target.value;
+                                                                    },
                                                                 }
                                                             ),
                                                         ]),
@@ -110,9 +125,15 @@ const editCustomer = {
                                                                     placeholder:
                                                                         "Användarnamn",
                                                                     value: Customers
-                                                                        .customer[0]
-                                                                        .user
+                                                                        .newCustomer
                                                                         .username,
+
+                                                                    oninput: (
+                                                                        e
+                                                                    ) => {
+                                                                        Customers.newCustomer.username =
+                                                                            e.target.value;
+                                                                    },
                                                                 }
                                                             ),
                                                         ]),
@@ -130,15 +151,26 @@ const editCustomer = {
                                                                     placeholder:
                                                                         "Telefonnummer",
                                                                     value: Customers
-                                                                        .customer[0]
-                                                                        .user
+                                                                        .newCustomer
                                                                         .phone,
+                                                                    oninput: (
+                                                                        e
+                                                                    ) => {
+                                                                        Customers.newCustomer.phone =
+                                                                            e.target.value;
+                                                                    },
                                                                 }
                                                             ),
                                                         ]),
                                                     ]),
                                                 ]),
-                                            ]
+                                            ],
+                                            m(
+                                                "div.m-3.text-center",
+                                                m(
+                                                    "input[type=submit][value=Spara ändringar].btn.btn-primary.btn-sm"
+                                                )
+                                            )
                                         ),
                                     ]),
                                 ]),
