@@ -100,7 +100,9 @@ const Cities = {
                 query: mutation,
             },
         }).then((response) => {
-            console.log(response);
+            if (response.data) {
+                m.route.set("/stader");
+            }
         });
     },
 };
