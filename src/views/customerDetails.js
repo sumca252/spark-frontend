@@ -3,10 +3,11 @@ import m from "mithril";
 import Customers from "../models/customers";
 
 const CustomerDetails = {
-    oncreate: (vnode) => {
-        Customers.getCustomerById(vnode.attrs.id);
+    oninit: async (vnode) => {
+        await Customers.getCustomerById(vnode.attrs.id);
+        console.log(" CustomerDetails oninit", Customers.customer[0]);
     },
-    view: function (vnode) {
+    view: () => {
         return m("div.mt-5", [
             m("div.container-fluid", [
                 m("h3.text-dark.mb-4", "Kund Detaljer"),
@@ -34,45 +35,23 @@ const CustomerDetails = {
                                         ]),
                                     ]),
                                     m("tbody", [
-                                        Customers.customer &&
-                                            Customers.customer.map(
-                                                (customer) => {
-                                                    return m("tr.text-center", [
-                                                        m("td", customer.id),
-                                                        m(
-                                                            "td",
-                                                            customer.user
-                                                                .first_name
-                                                        ),
-                                                        m(
-                                                            "td",
-                                                            customer.user
-                                                                .last_name
-                                                        ),
-                                                        m(
-                                                            "td",
-                                                            customer.user
-                                                                .username
-                                                        ),
-                                                        m(
-                                                            "td",
-                                                            customer.user.email
-                                                        ),
-                                                        m(
-                                                            "td",
-                                                            customer.user.phone
-                                                        ),
-                                                        m(
-                                                            "td",
-                                                            customer.user
-                                                                .role ===
-                                                                "Customer"
-                                                                ? "Kund"
-                                                                : ""
-                                                        ),
-                                                    ]);
-                                                }
-                                            ),
+                                        Customers.customer.map((customer) => {
+                                            return m("tr", [
+                                                m("td", customer.id),
+                                                m(
+                                                    "td",
+                                                    customer.user.first_name
+                                                ),
+                                                m(
+                                                    "td",
+                                                    customer.user.last_name
+                                                ),
+                                                m("td", customer.user.username),
+                                                m("td", customer.user.email),
+                                                m("td", customer.user.phone),
+                                                m("td", customer.user.role),
+                                            ]);
+                                        }),
                                     ]),
                                 ]
                             ),
