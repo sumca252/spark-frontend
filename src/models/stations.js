@@ -71,6 +71,37 @@ const Stations = {
             Stations.station = response.data.getStatioById;
         });
     },
+    getStationByZoneType: (zoneType) => {
+        const query = `
+            {
+                getStationByZoneType(zone_type: "${zoneType}") {
+                    id,
+                    station_name,
+                    city_name,
+                    zone_type,
+                    latitude,
+                    longitude
+                }
+            }
+        `;
+
+        return m
+            .request({
+                method: "POST",
+                url: `${Stations.url}/graphql`,
+                body: {
+                    query: query,
+                },
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+            .then((result) => {
+                Stations.station = result.data.getStationByZoneType;
+                console.log(Stations.station);
+            });
+    },
+
     addStation: () => {
         const mutations = `
             mutation {
