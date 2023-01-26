@@ -1,9 +1,11 @@
 import m from "mithril";
 import Scooters from "../models/scooters";
+import Stations from "../models/stations";
 
 const moveScooter = {
-    oncreate: (vnode) => {
+    oninit: (vnode) => {
         Scooters.getScooterById(vnode.attrs.id);
+        Stations.getAllStations();
     },
     view: function () {
         return m("div.mt-5", [
@@ -26,7 +28,7 @@ const moveScooter = {
                                             {
                                                 onsubmit: function (e) {
                                                     e.preventDefault();
-                                                    Scooters.updateScooter();
+                                                    Scooters.moveScooter();
                                                 },
                                             },
                                             [
@@ -38,14 +40,14 @@ const moveScooter = {
                                                                 "Sparkcykel ID"
                                                             ),
                                                             m(
-                                                                "input.form-control",
+                                                                "input.form-control[readonly]",
                                                                 {
                                                                     type: "text",
                                                                     placeholder:
                                                                         "Sparkcykel ID",
                                                                     value: Scooters
-                                                                        .scooter
-                                                                        .id,
+                                                                        .updateScooter
+                                                                        .scooterId,
                                                                 }
                                                             ),
                                                         ]),
@@ -57,8 +59,20 @@ const moveScooter = {
                                                                 "Status ID"
                                                             ),
                                                             m(
-                                                                "select.form-select",
+                                                                "select[required].form-select",
+                                                                {
+                                                                    onchange: (
+                                                                        e
+                                                                    ) => {
+                                                                        Scooters.updateScooter.statusId =
+                                                                            e.target.value;
+                                                                    },
+                                                                },
                                                                 [
+                                                                    m(
+                                                                        "option",
+                                                                        "Välj status"
+                                                                    ),
                                                                     m(
                                                                         "option",
                                                                         {
@@ -134,7 +148,7 @@ const moveScooter = {
                                                                     placeholder:
                                                                         "Longitud",
                                                                     value: Scooters
-                                                                        .scooter
+                                                                        .updateScooter
                                                                         .longitude,
                                                                 }
                                                             ),
@@ -153,7 +167,7 @@ const moveScooter = {
                                                                     placeholder:
                                                                         "Latitud",
                                                                     value: Scooters
-                                                                        .scooter
+                                                                        .updateScooter
                                                                         .latitude,
                                                                 }
                                                             ),
@@ -165,50 +179,48 @@ const moveScooter = {
                                                         m("div.mb-3", [
                                                             m(
                                                                 "label.form-label",
-                                                                "Pris per minut"
+                                                                "Stad"
                                                             ),
                                                             m(
-                                                                "select.form-select",
+                                                                "select[required].form-select",
+                                                                {
+                                                                    onchange: (
+                                                                        e
+                                                                    ) => {
+                                                                        Scooters.updateScooter.stationId =
+                                                                            e.target.value;
+                                                                    },
+                                                                },
                                                                 [
                                                                     m(
                                                                         "option",
-                                                                        {
-                                                                            value: "1",
-                                                                        },
-                                                                        "1 kr"
+                                                                        "Välj station att flytta sparkcykeln till"
                                                                     ),
+                                                                    Stations.allStations &&
+                                                                        Stations.allStations.map(
+                                                                            (
+                                                                                station
+                                                                            ) => {
+                                                                                return m(
+                                                                                    "option",
+                                                                                    {
+                                                                                        value: station.id,
+                                                                                    },
+                                                                                    station.station_name
+                                                                                );
+                                                                            }
+                                                                        ),
                                                                 ]
                                                             ),
                                                         ]),
                                                     ]),
-                                                    m("div.col", [
-                                                        m("div.mb-3", [
-                                                            m(
-                                                                "label.form-label",
-                                                                "Hastighet"
-                                                            ),
-                                                            m(
-                                                                "input.form-control",
-                                                                {
-                                                                    type: "text",
-                                                                    placeholder:
-                                                                        "Hastighet",
-                                                                    value: Scooters
-                                                                        .scooter
-                                                                        .speed,
-                                                                }
-                                                            ),
-                                                        ]),
-                                                    ]),
                                                 ]),
-                                            ]
-                                        ),
-
-                                        m(
-                                            "div.m-3.text-center",
+                                            ],
                                             m(
-                                                "button.btn.btn-primary.btn-sm",
-                                                "Spara ändringar"
+                                                "div.m-3.text-center",
+                                                m(
+                                                    "input[type=submit][value=Spara ändringar].btn.btn-primary.btn-sm"
+                                                )
                                             )
                                         ),
                                     ]),
