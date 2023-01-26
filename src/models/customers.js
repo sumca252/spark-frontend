@@ -86,7 +86,39 @@ const Customers = {
             });
     },
     updateCustomer: () => {
-        console.log(Customers.newCustomer);
+        const query = `
+            mutation {
+                updateCustomerByCustomerId(
+                    id: "${Customers.newCustomer.customerId}",
+                    first_name: "${Customers.newCustomer.first_name}",
+                    last_name: "${Customers.newCustomer.last_name}",
+                    username: "${Customers.newCustomer.username}",
+                    email: "${Customers.newCustomer.email}",
+                    phone: "${Customers.newCustomer.phone}",
+                    ) {
+                        result
+                    }
+            }`;
+
+        return m
+            .request({
+                method: "POST",
+                url: `${Customers.url}/graphql`,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: {
+                    query: query,
+                },
+            })
+            .then((response) => {
+                if (
+                    response.data.updateCustomerByCustomerId.result ===
+                    "Updated customer"
+                ) {
+                    m.route.set("/kunder");
+                }
+            });
     },
 };
 
