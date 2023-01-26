@@ -7,6 +7,16 @@ const Scooters = {
 
     allScooters: [],
     scooter: [],
+    updateScooter: {
+        scooterId: "",
+        battery: "",
+        statusId: "",
+        longitude: "",
+        latitude: "",
+        priceId: "1",
+        speed: "",
+        stationId: "",
+    },
     getAllScooters: () => {
         const query = `
             query {
@@ -40,7 +50,10 @@ const Scooters = {
                 },
             })
             .then((result) => {
-                Scooters.allScooters = result.data.getAllScooters;
+                Scooters.allScooters = result.data.getAllScooters.slice(
+                    0,
+                    1000
+                );
             });
     },
     getScooterById: (id) => {
@@ -76,27 +89,49 @@ const Scooters = {
                 },
             })
             .then((result) => {
-                Scooters.scooter = result.data.getScooterById;
+                if (result.data.getScooterById) {
+                    Scooters.scooter = result.data.getScooterById;
+
+                    Scooters.updateScooter.scooterId =
+                        result.data.getScooterById[0].id;
+
+                    Scooters.updateScooter.battery =
+                        result.data.getScooterById[0].battery;
+
+                    Scooters.updateScooter.longitude =
+                        result.data.getScooterById[0].longitude;
+
+                    Scooters.updateScooter.latitude =
+                        result.data.getScooterById[0].latitude;
+
+                    Scooters.updateScooter.speed =
+                        result.data.getScooterById[0].speed;
+
+                    console.log(result.data.getScooterById);
+                }
             });
     },
     moveScooter: () => {
+        console.log(Scooters.updateScooter);
+
         const query = `
             mutation {
                 updateScooterById(
-                    id: "${Scooters.scooter.id}",
-                    battery: "${Scooters.scooter.battery}",
-                    status_id: "${Scooters.scooter.status.id}",
-                    longitude: "${Scooters.scooter.longitude}",
-                    latitude: "${Scooters.scooter.latitude}",
-                    price_id: "${Scooters.scooter.price.id}",
-                    speed: "${Scooters.scooter.speed}",
-                    station_id: "${Scooters.scooter.station.id}",
+                    id: "${Scooters.updateScooter.scooterId}",
+                    battery: "${Scooters.updateScooter.battery}",
+                    status_id: "${Scooters.updateScooter.statusId}",
+                    longitude: "${Scooters.updateScooter.longitude}",
+                    latitude: "${Scooters.updateScooter.latitude}",
+                    price_id: "${Scooters.updateScooter.priceId}",
+                    speed: "${Scooters.updateScooter.speed}",
+                    station_id: "${Scooters.updateScooter.stationId}",
                 ) {
                     id,
                 }
             }
         `;
 
+        console.log(query);
         return m
             .request({
                 method: "POST",
@@ -109,7 +144,9 @@ const Scooters = {
                 },
             })
             .then((result) => {
-                console.log(result);
+                if (result.data.updateScooterById === null) {
+                    m.route.set("/sparkcyklar");
+                }
             });
     },
 };
