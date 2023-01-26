@@ -22,7 +22,8 @@
         "clean-webpack-plugin": "^4.0.0",
         "leaflet": "^1.9.3",
         "mithril": "^2.2.2",
-        "sass": "^1.57.1"
+        "sass": "^1.57.1",
+        "socket.io-client": "^4.5.4"
     },
     "devDependencies": {
         "css-loader": "^6.7.3",
