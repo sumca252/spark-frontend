@@ -57,7 +57,9 @@ const showStationZones = (results) => {
     });
 };
 
-const url = "http://localhost:1337";
+const url = process.env.DEV_SOCKET_API_BASE_URL
+    ? process.env.DEV_SOCKET_API_BASE_URL
+    : process.env.PROD_SOCKET_API_BASE_URL;
 
 const socket = io(url);
 
