@@ -1,7 +1,6 @@
-import m from "mithril";
+const m = require("mithril");
 
-import Admins from "../models/admins.js";
-import Auth from "../models/auth.js";
+const Admins = require("../models/admins.js");
 
 const admin = {
     oncreate: () => {
@@ -120,4 +119,4 @@ const admin = {
     },
 };
 
-export default admin;
+module.exports = admin;

@@ -1,6 +1,6 @@
-import m from "mithril";
+const m = require("mithril");
+const Stations = require("../models/stations");
 
-import Stations from "../models/stations";
 
 const stations = {
     oncreate: () => {
@@ -86,7 +86,7 @@ const stations = {
                                             Stations.allStations.map(
                                                 (station) => {
                                                     return m(
-                                                        "tr",
+                                                        "tr.stationdata",
                                                         {
                                                             key: station.id,
                                                             onclick: () => {
@@ -149,4 +149,4 @@ const stations = {
     },
 };
 
-export default stations;
+module.exports = stations;

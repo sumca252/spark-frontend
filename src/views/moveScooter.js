@@ -1,6 +1,6 @@
-import m from "mithril";
-import Scooters from "../models/scooters";
-import Stations from "../models/stations";
+const m = require("mithril");
+const Scooters = require("../models/scooters");
+const Stations = require("../models/stations");
 
 const moveScooter = {
     oninit: (vnode) => {
@@ -59,7 +59,7 @@ const moveScooter = {
                                                                 "Status ID"
                                                             ),
                                                             m(
-                                                                "select[required].form-select",
+                                                                "select[required].form-select[name=statusId]",
                                                                 {
                                                                     onchange: (
                                                                         e
@@ -182,7 +182,7 @@ const moveScooter = {
                                                                 "Stad"
                                                             ),
                                                             m(
-                                                                "select[required].form-select",
+                                                                "select[required].form-select[name=stationId]",
                                                                 {
                                                                     onchange: (
                                                                         e
@@ -234,4 +234,4 @@ const moveScooter = {
     },
 };
 
-export default moveScooter;
+module.exports = moveScooter;

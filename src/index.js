@@ -1,30 +1,32 @@
-import m from "mithril";
+const m = require("mithril");
 
-import Auth from "./models/auth.js";
+// models
+const Auth = require("./models/auth.js");
 
-import layout from "./views/layout.js";
+
+// views
+const layout = require("./views/layout.js");
+const admin = require("./views/admin.js");
+const settings = require("./views/settings.js");
+
+const cities = require("./views/cities.js");
+const addCity = require("./views/addCity.js");
+
+const stations = require("./views/stations.js");
+const addStation = require("./views/addStation.js");
+
+const customers = require("./views/customers.js");
+const CustomerDetails = require("./views/customerDetails.js");
+const editCustomer = require("./views/editCustomer.js");
+
+const login = require("./views/login.js");
+const register = require("./views/register.js");
+
+const scooters = require("./views/scooters.js");
+const moveScooter = require("./views/moveScooter.js");
 
 import overview from "./views/overview.js";
 
-import admin from "./views/admin.js";
-
-import cities from "./views/cities.js";
-import addCity from "./views/addCity.js";
-
-import stations from "./views/stations.js";
-import addStation from "./views/addStation.js";
-
-import customers from "./views/customers.js";
-import CustomerDetails from "./views/customerDetails.js";
-import editCustomer from "./views/editCustomer.js";
-
-import login from "./views/login.js";
-import register from "./views/register.js";
-
-import settings from "./views/settings.js";
-
-import scooters from "./views/scooters.js";
-import moveScooter from "./views/moveScooter.js";
 
 m.route(document.body, "/", {
     "/": {

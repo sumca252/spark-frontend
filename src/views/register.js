@@ -1,5 +1,6 @@
-import Auth from "../models/auth.js";
-import m from "mithril";
+const m = require("mithril");
+const Auth = require("../models/auth.js");
+
 
 const register = {
     view: () => {
@@ -34,6 +35,7 @@ const register = {
                                                             {
                                                                 type: "text",
                                                                 id: "username",
+                                                                name: "username",
                                                                 placeholder:
                                                                     "Användarnamn",
                                                                 oninput: (
@@ -54,6 +56,7 @@ const register = {
                                                             {
                                                                 type: "text",
                                                                 id: "firstName",
+                                                                name: "firstname",
                                                                 placeholder:
                                                                     "Förnamn",
                                                                 oninput: (
@@ -74,6 +77,7 @@ const register = {
                                                             {
                                                                 type: "text",
                                                                 id: "lastName",
+                                                                name: "lastname",
                                                                 placeholder:
                                                                     "Efternamn",
                                                                 oninput: (
@@ -94,6 +98,7 @@ const register = {
                                                             {
                                                                 type: "email",
                                                                 id: "email",
+                                                                name: "email",
                                                                 placeholder:
                                                                     "E-post adress",
                                                                 oninput: (
@@ -114,6 +119,7 @@ const register = {
                                                             {
                                                                 type: "text",
                                                                 id: "phone",
+                                                                name: "phone",
                                                                 placeholder:
                                                                     "0712345678",
                                                                 pattern:
@@ -137,6 +143,7 @@ const register = {
                                                             {
                                                                 type: "password",
                                                                 id: "password",
+                                                                name: "password",
                                                                 placeholder:
                                                                     "Lösenord",
 
@@ -222,4 +229,4 @@ const register = {
     },
 };
 
-export default register;
+module.exports = register;

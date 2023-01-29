@@ -1,18 +1,20 @@
-import m from "mithril";
-import L from "leaflet";
+require("leaflet/dist/leaflet.css");
+const m = require("mithril");
+const L = require("leaflet");
 
-import io from "socket.io-client";
+const io = require("socket.io-client");
 
 import Auth from "../models/auth.js";
 
-import "leaflet/dist/leaflet.css";
+// images
 import "leaflet/dist/images/marker-icon.png";
 import "leaflet/dist/images/marker-icon-2x.png";
 import "leaflet/dist/images/marker-shadow.png";
 import scooter from "../img/scooter.png";
 
-import Stations from "../models/stations.js";
-import Scooters from "../models/scooters.js";
+
+const Stations = require("../models/stations.js");
+//const Scooters = require("../models/scooters.js");
 
 let map;
 let markers = {};

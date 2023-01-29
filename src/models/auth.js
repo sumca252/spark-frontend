@@ -1,4 +1,4 @@
-import m from "mithril";
+const m = require("mithril");
 
 const Auth = {
     url: process.env.DEV_API_BASE_URL
@@ -113,4 +113,4 @@ const Auth = {
     },
 };
 
-export default Auth;
+module.exports = Auth;

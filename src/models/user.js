@@ -1,6 +1,6 @@
-import m from "mithril";
+const m = require("mithril");
 
-import Auth from "./auth.js";
+const Auth = require("./auth.js");
 
 const User = {
     url: process.env.DEV_API_BASE_URL
@@ -45,4 +45,4 @@ const User = {
     },
 };
 
-export default User;
+module.exports = User;

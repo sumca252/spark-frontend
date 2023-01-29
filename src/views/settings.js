@@ -1,7 +1,6 @@
-import m from "mithril";
-
-import Auth from "../models/auth";
-import User from "../models/user";
+const m = require("mithril");
+const Auth = require("../models/auth");
+const User = require("../models/user");
 
 const settings = {
     view: () => {
@@ -40,6 +39,7 @@ const settings = {
                                                                 "input.form-control",
                                                                 {
                                                                     type: "text",
+                                                                    name: "firstname",
                                                                     placeholder:
                                                                         "Förnamn",
                                                                     value: Auth
@@ -65,6 +65,7 @@ const settings = {
                                                                 "input.form-control",
                                                                 {
                                                                     type: "text",
+                                                                    name: "lastname",
                                                                     placeholder:
                                                                         "Efternamn",
                                                                     value: Auth
@@ -144,6 +145,7 @@ const settings = {
                                                                 "input.form-control",
                                                                 {
                                                                     type: "text",
+                                                                    name: "username",
                                                                     placeholder:
                                                                         "Användarnamn",
                                                                     value: Auth
@@ -204,4 +206,4 @@ const settings = {
     },
 };
 
-export default settings;
+module.exports = settings;
