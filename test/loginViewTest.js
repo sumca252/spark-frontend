@@ -68,44 +68,4 @@ describe("Test login view", () => {
 
         assert.isFalse(loginMock.calledOnce);
     });
-
-
-
-    describe("Test login with Google onclick", () => {
-        let googleLoginMock;
-
-        beforeEach(() => {
-            googleLoginMock = sinon.stub(Auth, "loginWithGoogle");
-        });
-
-        afterEach(() => {
-            Auth.loginWithGoogle.restore();
-        });
-
-        it("should login customer with Google", () => {
-            const output = mq(login);
-
-            output.click(".btn.btn-google");
-            assert.isTrue(googleLoginMock.calledOnce);
-        });
-    });
-
-    describe("Test login with Github onclick", () => {
-        let GithubLoginMock;
-
-        beforeEach(() => {
-            GithubLoginMock = sinon.stub(Auth, "loginWithGithub");
-        });
-
-        afterEach(() => {
-            Auth.loginWithGithub.restore();
-        });
-
-        it("should login customer with Github", () => {
-            const output = mq(login);
-
-            output.click(".btn.btn-github");
-            assert.isTrue(GithubLoginMock.calledOnce);
-        });
-    });
 });

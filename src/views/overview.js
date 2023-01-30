@@ -4,7 +4,7 @@ const L = require("leaflet");
 
 const io = require("socket.io-client");
 
-import Auth from "../models/auth.js";
+//import Auth from "../models/auth.js";
 
 // images
 import "leaflet/dist/images/marker-icon.png";
