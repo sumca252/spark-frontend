@@ -1,4 +1,4 @@
-import m from "mithril";
+const m = require("mithril");
 
 const Cities = {
     url: process.env.DEV_API_BASE_URL
@@ -40,7 +40,7 @@ const Cities = {
                 },
             })
             .then((response) => {
-                Cities.allCities = response.data.getAllCities;
+                Cities.allCitites = response.data.getAllCities;
             })
             .catch((error) => {
                 console.log(error);
@@ -107,4 +107,4 @@ const Cities = {
     },
 };
 
-export default Cities;
+module.exports = Cities;

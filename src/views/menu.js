@@ -1,6 +1,4 @@
-import m from "mithril";
-
-import Auth from "../models/auth";
+const m = require("mithril");
 
 const menu = {
     view: function (vnode) {
@@ -90,4 +88,4 @@ const menu = {
     },
 };
 
-export default menu;
+module.exports = menu;

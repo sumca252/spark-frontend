@@ -1,4 +1,5 @@
-import m from "mithril";
+const m = require("mithril");
+
 
 const Customers = {
     url: process.env.DEV_API_BASE_URL
@@ -122,4 +123,4 @@ const Customers = {
     },
 };
 
-export default Customers;
+module.exports = Customers;

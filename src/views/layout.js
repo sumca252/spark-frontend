@@ -1,5 +1,6 @@
-import m from "mithril";
-import menu from "./menu.js";
+const m = require("mithril");
+
+const menu = require("./menu.js");
 
 const layout = {
     view: function (vnode) {
@@ -54,4 +55,4 @@ const layout = {
     },
 };
 
-export default layout;
+module.exports = layout;

@@ -24,9 +24,14 @@ $ npm run build
 
 ## Test
 
+Run both tests and code coverage
 ```bash
-# unit tests
 $ npm run test
+```
+
+Run only tests
+```bash
+$ npm run mocha
 ```
 
 ## EsLint

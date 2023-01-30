@@ -1,6 +1,6 @@
-import m from "mithril";
+const m = require("mithril");
 
-import Cities from "../models/cities.js";
+const Cities = require("../models/cities.js");
 
 const addCity = {
     view: function () {
@@ -39,6 +39,7 @@ const addCity = {
                                                                 "input.form-control",
                                                                 {
                                                                     type: "text",
+                                                                    name: "cityName",
                                                                     placeholder:
                                                                         "Namn",
                                                                     oninput: (
@@ -61,6 +62,7 @@ const addCity = {
                                                                 "input.form-control",
                                                                 {
                                                                     type: "text",
+                                                                    name: "country",
                                                                     placeholder:
                                                                         "Land",
                                                                     oninput: (
@@ -85,6 +87,7 @@ const addCity = {
                                                                 "input.form-control",
                                                                 {
                                                                     type: "text",
+                                                                    name: "longitude",
                                                                     placeholder:
                                                                         "Longitud",
                                                                     oninput: (
@@ -107,6 +110,7 @@ const addCity = {
                                                                 "input.form-control",
                                                                 {
                                                                     type: "text",
+                                                                    name: "latitude",
                                                                     placeholder:
                                                                         "Latitud",
                                                                     oninput: (
@@ -131,6 +135,7 @@ const addCity = {
                                                                 "input.form-control",
                                                                 {
                                                                     type: "text",
+                                                                    name: "area",
                                                                     placeholder:
                                                                         "Yta (km2)",
                                                                     oninput: (
@@ -163,4 +168,4 @@ const addCity = {
     },
 };
 
-export default addCity;
+module.exports = addCity;

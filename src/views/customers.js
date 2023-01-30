@@ -1,6 +1,6 @@
-import m from "mithril";
+const m = require("mithril");
 
-import Customers from "../models/customers";
+const Customers = require("../models/customers");
 
 const customers = {
     oncreate: () => {
@@ -140,4 +140,4 @@ const customers = {
     },
 };
 
-export default customers;
+module.exports = customers;

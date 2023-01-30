@@ -1,6 +1,6 @@
-import m from "mithril";
+const m = require("mithril");
 
-import Customers from "../models/customers";
+const Customers = require("../models/customers");
 
 const CustomerDetails = {
     oninit: (vnode) => {
@@ -62,4 +62,4 @@ const CustomerDetails = {
     },
 };
 
-export default CustomerDetails;
+module.exports = CustomerDetails;

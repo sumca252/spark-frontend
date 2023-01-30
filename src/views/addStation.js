@@ -1,9 +1,7 @@
-import m from "mithril";
+const m = require("mithril");
 
-import Auth from "../models/auth";
-import Cities from "../models/cities";
-
-import Stations from "../models/stations";
+const Cities = require("../models/cities");
+const Stations = require("../models/stations");
 
 const addStation = {
     oninit: () => {
@@ -45,6 +43,7 @@ const addStation = {
                                                                 "input.form-control",
                                                                 {
                                                                     type: "text",
+                                                                    name: "stationName",
                                                                     placeholder:
                                                                         "Namn",
                                                                     oninput: (
@@ -64,7 +63,7 @@ const addStation = {
                                                                 "Zone"
                                                             ),
                                                             m(
-                                                                "select.form-select",
+                                                                "select.form-select[name=zoneId]",
                                                                 {
                                                                     onchange: (
                                                                         e
@@ -122,6 +121,7 @@ const addStation = {
                                                                 "input.form-control",
                                                                 {
                                                                     type: "text",
+                                                                    name: "longitude",
                                                                     placeholder:
                                                                         "Longitud",
                                                                     oninput: (
@@ -144,6 +144,7 @@ const addStation = {
                                                                 "input.form-control",
                                                                 {
                                                                     type: "text",
+                                                                    name: "latitude",
                                                                     placeholder:
                                                                         "Latitud",
                                                                     oninput: (
@@ -165,7 +166,7 @@ const addStation = {
                                                                 "Stad"
                                                             ),
                                                             m(
-                                                                "select.form-select",
+                                                                "select.form-select[name=cityId]",
                                                                 {
                                                                     onchange: (
                                                                         e
@@ -179,8 +180,8 @@ const addStation = {
                                                                         "option",
                                                                         "Välj stad"
                                                                     ),
-                                                                    Cities.allCities &&
-                                                                        Cities.allCities.map(
+                                                                    Cities.allCitites &&
+                                                                        Cities.allCitites.map(
                                                                             (
                                                                                 city
                                                                             ) => {
@@ -217,4 +218,4 @@ const addStation = {
     },
 };
 
-export default addStation;
+module.exports = addStation;

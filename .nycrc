@@ -1,0 +1,13 @@
+{
+  "reporter": [
+    "lcov",
+    "html",
+    "text",
+    "clover"
+  ],
+  "check-coverage": false,
+  "include": [
+    "src/views/*"
+  ],
+  "cache": true
+}

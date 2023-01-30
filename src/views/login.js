@@ -1,5 +1,5 @@
-import Auth from "../models/auth";
-import m from "mithril";
+const m = require("mithril");
+const Auth = require("../models/auth");
 
 const login = {
     view: () => {
@@ -162,4 +162,4 @@ const login = {
     },
 };
 
-export default login;
+module.exports = login;

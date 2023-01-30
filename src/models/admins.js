@@ -1,4 +1,5 @@
-import m from "mithril";
+const m = require("mithril");
+
 
 const Admins = {
     url: process.env.DEV_API_BASE_URL
@@ -37,4 +38,4 @@ const Admins = {
     },
 };
 
-export default Admins;
+module.exports = Admins;

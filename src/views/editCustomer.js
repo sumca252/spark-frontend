@@ -1,6 +1,6 @@
-import m from "mithril";
+const m = require("mithril");
 
-import Customers from "../models/customers.js";
+const Customers = require("../models/customers");
 
 const editCustomer = {
     oninit: (vnode) => {
@@ -42,6 +42,7 @@ const editCustomer = {
                                                                 "input.form-control",
                                                                 {
                                                                     type: "text",
+                                                                    name: "firstname",
                                                                     placeholder:
                                                                         "Förnamn",
                                                                     value: Customers
@@ -67,6 +68,7 @@ const editCustomer = {
                                                                 "input.form-control",
                                                                 {
                                                                     type: "text",
+                                                                    name: "lastname",
                                                                     placeholder:
                                                                         "Efternamn",
                                                                     value: Customers
@@ -94,7 +96,7 @@ const editCustomer = {
                                                             m(
                                                                 "input.form-control",
                                                                 {
-                                                                    type: "tel",
+                                                                    type: "email",
                                                                     placeholder:
                                                                         "E-post adress",
                                                                     value: Customers
@@ -122,6 +124,7 @@ const editCustomer = {
                                                                 "input.form-control",
                                                                 {
                                                                     type: "text",
+                                                                    name: "username",
                                                                     placeholder:
                                                                         "Användarnamn",
                                                                     value: Customers
@@ -183,4 +186,4 @@ const editCustomer = {
     },
 };
 
-export default editCustomer;
+module.exports = editCustomer;

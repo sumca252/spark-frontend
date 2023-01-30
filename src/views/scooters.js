@@ -1,6 +1,5 @@
-import m from "mithril";
-
-import Scooters from "../models/scooters";
+const m = require("mithril");
+const Scooters = require("../models/scooters");
 
 const scooters = {
     oninit: () => {
@@ -137,4 +136,4 @@ const scooters = {
     },
 };
 
-export default scooters;
+module.exports = scooters;

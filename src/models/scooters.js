@@ -1,4 +1,4 @@
-import m from "mithril";
+const m = require("mithril");
 
 const Scooters = {
     url: process.env.DEV_API_BASE_URL
@@ -151,4 +151,4 @@ const Scooters = {
     },
 };
 
-export default Scooters;
+module.exports = Scooters;

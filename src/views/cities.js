@@ -1,6 +1,6 @@
-import m from "mithril";
+const m = require("mithril");
 
-import Cities from "../models/cities.js";
+const Cities = require("../models/cities.js");
 
 const cities = {
     oncreate: () => {
@@ -79,10 +79,10 @@ const cities = {
                                         ]),
                                     ]),
                                     m("tbody", [
-                                        Cities.allCities &&
-                                            Cities.allCities.map((city) => {
+                                        Cities.allCitites &&
+                                            Cities.allCitites.map((city) => {
                                                 return m(
-                                                    "tr",
+                                                    "tr.citydata",
                                                     {
                                                         key: city.id,
                                                         onclick: () => {
@@ -127,4 +127,4 @@ const cities = {
     },
 };
 
-export default cities;
+module.exports = cities;
