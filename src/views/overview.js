@@ -12,7 +12,6 @@ import "leaflet/dist/images/marker-icon-2x.png";
 import "leaflet/dist/images/marker-shadow.png";
 import scooter from "../img/scooter.png";
 
-
 const Stations = require("../models/stations.js");
 //const Scooters = require("../models/scooters.js");
 
@@ -108,7 +107,6 @@ const removeLayers = () => {
 
 const overview = {
     oninit: () => {
-        Auth.checkAuth();
         Stations.getAllStations();
     },
     oncreate: () => {
