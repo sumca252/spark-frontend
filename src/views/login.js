@@ -81,49 +81,6 @@ const login = {
                                                     },
                                                     "Logga in"
                                                 ),
-                                                m("hr"),
-                                                m(
-                                                    "button.btn.btn-danger.btn-block.text-white.btn-google.btn-user.w-100.mb-2",
-                                                    {
-                                                        oncreate: (vnode) => {
-                                                            vnode.dom.addEventListener(
-                                                                "click",
-                                                                () => {
-                                                                    Auth.loginWithGoogle();
-                                                                }
-                                                            );
-
-                                                            Auth.checkAuth();
-                                                        },
-                                                    },
-                                                    [
-                                                        m(
-                                                            "i.fa-brands fa-google.me-3"
-                                                        ),
-                                                        "Logga in med Google",
-                                                    ]
-                                                ),
-                                                m(
-                                                    "button.btn.btn-secondary.btn-block.text-white.btn-github.btn-user.w-100",
-                                                    {
-                                                        oncreate: (vnode) => {
-                                                            vnode.dom.addEventListener(
-                                                                "click",
-                                                                () => {
-                                                                    Auth.loginWithGithub();
-                                                                }
-                                                            );
-
-                                                            Auth.checkAuth();
-                                                        },
-                                                    },
-                                                    [
-                                                        m(
-                                                            "i.fa-brands fa-github.me-3"
-                                                        ),
-                                                        "Logga in med Github",
-                                                    ]
-                                                ),
                                             ]
                                         ),
                                         m("hr"),

@@ -73,37 +73,6 @@ const Auth = {
                 }
             });
     },
-    loginWithGithub: () => {
-        window.location.href = `${Auth.url}/auth/github2`;
-    },
-    loginWithGoogle: () => {
-        window.location.href = `${Auth.url}/auth/google2`;
-    },
-    checkAuth: () => {
-        return m
-            .request({
-                method: "GET",
-                url: `${Auth.url}/auth/success`,
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            })
-            .then((response) => {
-                if (response.status === 200 && response.user) {
-                    Auth.user.id = response.user.id;
-                    Auth.user.firstName = response.user.first_name;
-                    Auth.user.lastName = response.user.last_name;
-                    Auth.user.username = response.user.username;
-                    Auth.user.email = response.user.email;
-                    Auth.user.phone = response.user.phone;
-                    Auth.user.role = response.user.role;
-                    Auth.user.roleId = response.user.role_id;
-                    Auth.isAuthenticated = true;
-
-                    m.route.set("/");
-                }
-            });
-    },
     logout: () => {
         Auth.isAuthenticated = false;
         Auth.user = {};

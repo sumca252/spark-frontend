@@ -1,7 +1,6 @@
 const m = require("mithril");
 const Auth = require("../models/auth.js");
 
-
 const register = {
     view: () => {
         return m("div.container.flex-grow-1.mt-5", [
@@ -164,39 +163,12 @@ const register = {
                                                     },
                                                     "Skapa konto"
                                                 ),
-                                                m("hr"),
-                                                m(
-                                                    "button.btn.btn-danger.btn-block.text-white.btn-google.w-100.mb-2",
-                                                    {
-                                                        onclick:
-                                                            Auth.loginWithGoogle,
-                                                    },
-                                                    [
-                                                        m(
-                                                            "i.fa-brands.fa-google.me-3"
-                                                        ),
-                                                        "Registrera med Google",
-                                                    ]
-                                                ),
-                                                m(
-                                                    "button.btn.btn-secondary.btn-block.text-white.btn-github.w-100",
-                                                    {
-                                                        onclick:
-                                                            Auth.loginWithGithub,
-                                                    },
-                                                    [
-                                                        m(
-                                                            "i.fa-brands fa-github.me-3"
-                                                        ),
-                                                        "Registrera med Github",
-                                                    ]
-                                                ),
                                             ]
                                         ),
                                         m("hr"),
-                                        m("div.text-center", [
+                                        /* m("div.text-center", [
                                             m("a.small", "Glömt lösenord?"),
-                                        ]),
+                                        ]), */
                                         m("div.text-center", [
                                             m(
                                                 "a.small",
